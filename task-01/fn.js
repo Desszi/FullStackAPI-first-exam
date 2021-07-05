@@ -5,7 +5,7 @@
  * @returns a tömbnek az az eleme, amelynek az id -je megegyezik a kapottal
  */
 const get = (list = [], id = 0) => {
-    //
+    return list.find(element => element.id === id);
 };
 
 /**
@@ -15,7 +15,10 @@ const get = (list = [], id = 0) => {
  * @returns a létrehozott, beszúrt és id -vel ellátott objektum
  */
 const create = (list = [], entity = null) => {
-    //
+    const lastId = list[list.length -1 ].id + 1;
+    const newObject = {...entity, lastId};
+    list.push(newObject);
+    return newObject; 
 };
 
 /**
@@ -25,7 +28,14 @@ const create = (list = [], entity = null) => {
  * @returns a frissített objektum ha sikerült a frissítés, egyébként false
  */
 const update = (list = [], entity = {}) => {
-    //
+   if (list.length <1 || !entity.id) {
+       return false;
+   }
+
+   const updateObjectIndex = list.findIndex(element => element.id === entity.id);
+   list[updateObjectIndex] = {...list[updateObjectIndex], ...entity};
+
+   return list[updateObjectIndex];
 };
 
 /**
@@ -35,9 +45,21 @@ const update = (list = [], entity = {}) => {
  * @returns true ha sikeres volt a törlés, egyébként false
  */
 const remove = (list = [], id = 0) => {
-    //
+    if (list.length <1 || !id) {
+        return false;
+    }
+    const removeObjectIndex = list.findIndex(element => element.id === id);
+    list.splice(removeObjectIndex, 1);
+    return true; 
 };
 
 /**
  * 5. Exportáld ki a négy függvényt, hogy más fájlokból is elérhetőek legyenek.
  */
+
+module.exports = {
+    get,
+    create,
+    update,
+    remove,
+};
