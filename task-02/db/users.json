@@ -57,10 +57,12 @@
     },
     {
         "id": 9,
-        "firstName": "Lucien",
+        "firstName": "Luca", 
         "lastName": "Dwyer",
+        "age": "26",
         "email": "ldwyer8@ow.ly",
         "gender": "female"
+
     },
     {
         "id": 10,
