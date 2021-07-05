@@ -5,7 +5,13 @@ const db = require('../db/db');
  * getAll metódusát hívja meg és visszaadja az értékét.
  */
 
+const getAll = async () => await db.getAll();
+
 /**
  * 3. Exportáld ki a getAll metódust egy objektumban, hogy más fájlokból is 
  * elérhető legyen.
  */
+
+module.exports = { 
+    getAll,
+}
